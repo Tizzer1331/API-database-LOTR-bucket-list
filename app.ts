@@ -77,8 +77,11 @@ app.post ('/locations',async (req,res)=>{
     })
 
 app.delete ('/chars/:name', async (req,res)=>{
+    console.log("1")
     await Char.findOneAndDelete({name:req.params.name})
+    console.log("2")
     res.sendStatus(204)
+    console.log("3")
 })
 app.delete ('/locations/:name', async (req,res)=>{
     await Location.findOneAndDelete({name:req.params.name})
