@@ -3,13 +3,12 @@ import { time } from "console"
 import {Location, Char} from "./models/Schemas"
 import express from "express"
 import mongoose from "mongoose"
-import cors from "cors"
+
 import {logger} from "./middleware/logger"
 
 const app = express()
 const port = 8080
 app.use(logger)
-app.use(cors)
 app.use(express.json());
 const DB_URL="mongodb://127.0.0.1:27017/bucket-list"
 
@@ -43,7 +42,6 @@ app.get('/chars/:name',async (req,res)=>{
     res.status(200)
     res.json(CharFound)
 })
-
 app.get('/locations/:name',async (req,res)=>{
     const locationFound= await Location.findOne({name: req.params.name})
     res.status(200)
@@ -55,7 +53,6 @@ app.patch('/chars/:name',async (req,res)=>{
     const char = await Char.findOne({name:req.params.name})  
     res.json(char)  
 })
-
 app.patch('/location/:name',async (req,res)=>{
     await Location.findOneAndUpdate({name:req.params.name}, req.body)
     const location = await Location.findOne({name:req.params.name})  
