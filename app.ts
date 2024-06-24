@@ -11,7 +11,7 @@ const port = 8080
 app.use(logger)
 app.use(cors)
 app.use(express.json());
-const DB_URL="mongodb://127.0.0.1:27017/bucket-list"
+const DB_URL="mongodb+srv://jtyrrell:2dHDcyBe575fQIFf@bucket-list.5vkdir4.mongodb.net/?retryWrites=true&w=majority&appName=bucket-list"
 
 async function main(){
     await mongoose.connect(DB_URL)
