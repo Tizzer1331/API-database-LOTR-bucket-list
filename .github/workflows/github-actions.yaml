@@ -29,3 +29,7 @@ jobs:
           file: Dockerfile
           push: true
           tags: ghcr.io/tizzer1331/api:latest
+      - name: Jenkins
+        run: |
+          CRUMB=$(curl -u ash:{{secrets.JENKINS_API_TOKEN}} -s 'https://jenkins.netbuildertraining.com/crumbIssuer/api/json' | grep -o '"crumb":"[^"]*"' | cut -d':' -f2 | tr -d '"')
+          curl -u ash:{{secrets.JENKINS_API_TOKEN}} -H "Jenkins-Crumb: $CRUMB" -X POST 'https://jenkins.netbuildertraining.com/job/https://jenkins.netbuildertraining.com/job/Jon-deployment-pipeline/build'/build'
