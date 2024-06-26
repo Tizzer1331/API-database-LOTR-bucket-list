@@ -9,9 +9,9 @@ import {logger} from "./middleware/logger"
 const app = express()
 const port = 8080
 app.use(logger)
-app.use(cors)
+app.use(cors())
 app.use(express.json());
-const DB_URL="mongodb+srv://jtyrrell:2dHDcyBe575fQIFf@bucket-list.5vkdir4.mongodb.net/?retryWrites=true&w=majority&appName=bucket-list"
+const DB_URL="mongodb+srv://jtyrrell:2dHDcyBe575fQIFf@bucket-list.5vkdir4.mongodb.net/bucket-list?retryWrites=true&w=majority&appName=bucket-list"
 
 async function main(){
     await mongoose.connect(DB_URL)
@@ -39,9 +39,11 @@ app.get('/chars',async (req,res)=>{
 })
 
 app.get('/chars/:name',async (req,res)=>{
+    console.log("A")
     const CharFound= await Char.findOne({name: req.params.name})
     res.status(200)
     res.json(CharFound)
+    console.log("B")
 })
 
 app.get('/locations/:name',async (req,res)=>{
