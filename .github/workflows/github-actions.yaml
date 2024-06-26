@@ -28,4 +28,4 @@ jobs:
           platforms: linux/amd64
           file: Dockerfile
           push: true
-          tags: ghcr.io/tizzer1331/lotrapifrontend:latest
+          tags: ghcr.io/tizzer1331/API:latest
