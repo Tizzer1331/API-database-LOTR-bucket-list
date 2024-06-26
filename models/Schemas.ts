@@ -3,7 +3,8 @@ import { Schema, model } from "mongoose"
 const LocationSchema = new Schema({
     name: {type:String, unique:true, required:true},
     desc: String,
-    danger: Number
+    danger: Number,
+    id: { Number, unique:true, required:true}
 
 })
 
