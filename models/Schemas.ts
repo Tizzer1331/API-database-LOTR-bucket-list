@@ -4,7 +4,7 @@ const LocationSchema = new Schema({
     name: {type:String, unique:true, required:true},
     desc: String,
     danger: Number,
-    id: { Number, unique:true, required:true}
+    id: { type:Number, unique:true, required:true}
 
 })
 
